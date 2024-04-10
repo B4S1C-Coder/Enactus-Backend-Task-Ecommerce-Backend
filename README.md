@@ -14,9 +14,28 @@ A REST-API based backend for a startup catering to sustainable products.
 
 4. Admin website for interacting and managing all of the above.
 
-5. Protected through [knox](https://jazzband.github.io/django-rest-knox/) (a better and more secure alternative to the standard TokenAuthentication provided by the Django REST Framework).
+5. User accounts with profile photos and bio.
+
+6. Protected through [knox](https://jazzband.github.io/django-rest-knox/) (a better and more secure alternative to the standard TokenAuthentication provided by the Django REST Framework).
 
 >**Note:** For ease of deployment and developement time constraints, sqlite database has been used. However, the backend will work just fine with any other database backends supported by Django.
+
+## Endpoints
+`admin/` - To navigate to admin site.
+`products/create/` - To create a new product.
+`products/alter/<int:pk>` - GET for retrieving product, PUT for updating, DELETE for deleting.
+`suppliers/create/` - To create a new product.
+`suppliers/alter/<int:pk>` - GET for retrieving supplier, PUT for updating, DELETE for deleting.
+`shopping-cart/add-item/` - To add an item to the currently logged-in user's cart.
+`shopping-cart/remove-item/<int:itemid>` - Remove specified item from currently logged-in user's cart if it exists.
+`shopping-cart/view-cart/` - To view the contents of the currently logged-in user's cart
+`user-management/` - POST with Username, Email, Password to create a user (customer/buyer) account
+`user-management/login/` - POST with credentials to log in.
+`user-management/logout/` - POST to logout
+`user-management/update-profile-photo/<filename>` - To update the profile photo of the currently logged in user
+`user-management/user-info/` - To get details of the currently logged in user
+
+>**Note**: `user-management/login/` upon success will return a token. For subsequent requests to the server this token must be included in the request headers as `Authorization: Token <Yout-Token>`. By default each of these tokens are valid for 10 hours since they are issued and are destroyed if the corresponding user logs out.
 
 ## Setup
 1. Clone the repo via `git clone https://github.com/B4S1C-Coder/Enactus-Backend-Task-Ecommerce-Backend.git`
