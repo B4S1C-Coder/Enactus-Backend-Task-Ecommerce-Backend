@@ -1,0 +1,5 @@
+__pycache__/
+*/__pycache__/
+*/migrations/
+creds.txt
+master-dev-ecommerceDB.sqlite3
